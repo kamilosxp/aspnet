@@ -8,14 +8,13 @@ using Microsoft.AspNetCore.Mvc;
 namespace AspNetProject.Controllers
 {
     [ApiController]
-    [Route("api/AjaxController")]
+    [Route("api/[controller]")]
     public class AjaxController : ControllerBase
     {
-
-        public IActionResult Post(ItemModel item)
+        [HttpPost]
+        public ItemModel Post(ItemModel item)
         {
-
-            return null;
+            return item;
         }
     }
 }
