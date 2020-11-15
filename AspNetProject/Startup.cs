@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using AspNetProject.Filters;
+using Microsoft.EntityFrameworkCore;
 
 namespace AspNetProject
 {
@@ -28,6 +29,11 @@ namespace AspNetProject
             });
 
             services.AddTransient<MyCustomActionFilter>();
+
+            services.AddDbContext<ExchangesDbContext>(options => options
+                .UseSqlServer(Configuration.GetConnectionString("aspnetproject"))
+            );
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
